@@ -1,18 +1,28 @@
-// write cool JS hwere!!
-// DUMMY JSON IMPORTS
-import getAllProducts from "./modules/dummyjson/dummyJSon.js";
-
-import {getSingleProduct} from "./modules/dummyjson/dummyJSon.js";
-
- import {getSearchProduct} from "./modules/dummyjson/dummyJSon.js";
+export const app = document.getElementById('app');
+import { getRandomMeal } from "./modules/theMealDB/theMealDBasd.js";
+import  buildHomepage  from "./modules/opgave2/homepage.js";
 
 
-// MEAL DB IMPORTS
 
-import getAllMealCategories from "./modules/theMealDB/theMealDBasd.js";
+export function buildHomepageMain() {
+    
+        
+    let meals = [];
 
-getAllMealCategories().then(data => console.log(data));
-
+    for (let i = 0; i < 10; i++) {
+        getRandomMeal().then((data) => {
+            meals.push(data.meals[0]);
+            if (meals.length === 10) {
+                buildHomepage(meals);
+            }
+        });
+    }
 
     
+    
+    
+}
+    
+buildHomepageMain();
+
 
